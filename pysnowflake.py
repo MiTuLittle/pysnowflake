@@ -13,7 +13,7 @@ import os
 machine_name = socket.getfqdn(socket.gethostname())
 ip_machine = socket.gethostbyname(machine_name)
 machine_address = struct.unpack("!L", socket.inet_aton(ip_machine))[0]
-machine_address = machine_address ^ int(os.getpid())
+machine_address = machine_address ^ int(os.getpid()) # 使用当前运行进程和IP作为机器ID的生成条件
 tlock = threading.Lock()
 machineId = 0  # 机器ID
 datacenterId = 0  # 数据ID
